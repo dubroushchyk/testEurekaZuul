@@ -1,33 +1,36 @@
 package my.task.authservice.security;
 
-import lombok.RequiredArgsConstructor;
-import my.task.authservice.model.User;
-import my.task.authservice.repository.UserRepository;
+import my.task.authservice.dto.DTOUserOrAdmin;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
 import java.util.List;
 
-
 @Service
-@RequiredArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private final UserRepository userRepository;
+    RestTemplate restTemplate;
+
+    public UserDetailsServiceImpl(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-        if (user != null) {
-            List<GrantedAuthority> grantedAuthorities = AuthorityUtils
-                    .commaSeparatedStringToAuthorityList("ROLE_" + user.getRole().toString());
-            return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
-        } else {
-            throw new UsernameNotFoundException("Username: " + username + " not found");
-        }
-    }
 
+        DTOUserOrAdmin dtoUserOrAdmin = restTemplate
+                .getForObject("http://localhost:8765/customer/requestLogin/" + username, DTOUserOrAdmin.class);
+        if (dtoUserOrAdmin != null) {
+            List<GrantedAuthority> grantedAuthorities = AuthorityUtils
+                    .commaSeparatedStringToAuthorityList("ROLE_" + dtoUserOrAdmin.getRole());
+            return new org.springframework.security.core.userdetails.User(dtoUserOrAdmin.getUsername(),
+                    dtoUserOrAdmin.getPassword(), grantedAuthorities);
+        }
+        throw new UsernameNotFoundException("Username: " + dtoUserOrAdmin.getUsername() + " not found");
+    }
 }
