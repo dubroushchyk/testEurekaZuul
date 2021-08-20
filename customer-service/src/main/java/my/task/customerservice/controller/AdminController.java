@@ -6,6 +6,9 @@ import my.task.customerservice.service.AdminService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Base64;
 import java.util.List;
 
 @RestController
@@ -18,7 +21,15 @@ public class AdminController {
     }
 
     @PostMapping("/admin/new")
-    public ResponseEntity<DTOAdmin> createNewAdmin(@RequestBody DTOAdmin dtoAdmin) {
+    public ResponseEntity<DTOAdmin> createNewAdmin(@RequestBody DTOAdmin dtoAdmin,
+                                                   @RequestHeader("X-Secret-Key") String key) {
+        DateTimeFormatter formatters = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String text = LocalDate.now().format(formatters);
+        byte[] decodedBytes = Base64.getDecoder().decode(key);
+        String decodedKey = new String(decodedBytes);
+        if (!text.equals(decodedKey)) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
         DTOAdmin newDTOAdmin = adminService.createNewAdmin(dtoAdmin);
         if (newDTOAdmin != null) {
             return new ResponseEntity<>(newDTOAdmin, HttpStatus.OK);
@@ -26,40 +37,16 @@ public class AdminController {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
-    @GetMapping("/users/search/characteristics/{characteristics}")
-    public ResponseEntity<List<DTOUser>> getAllUsersByAdditionalCharacteristics(
-            @PathVariable("characteristics") String characteristics) {
-        List<DTOUser> listUsers = adminService.getAllUsersByAdditionalСharacteristics(characteristics);
-        if (!listUsers.isEmpty()) {
-            return new ResponseEntity<>(listUsers, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(listUsers, HttpStatus.NO_CONTENT);
-    }
-
-    @GetMapping("/users/search/purpose/{purpose}")
-    public ResponseEntity<List<DTOUser>> getAllUsersByPurpose(
-            @PathVariable("purpose") String purpose) {
-        List<DTOUser> listUsers = adminService.getAllUsersByPurpose(purpose);
-        if (!listUsers.isEmpty()) {
-            return new ResponseEntity<>(listUsers, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(listUsers, HttpStatus.NO_CONTENT);
-    }
-
-    @GetMapping("/users/search/age/{age}")
-    public ResponseEntity<List<DTOUser>> getAllUsersByAge(
-            @PathVariable("age") Integer age) {
-        List<DTOUser> listUsers = adminService.getAllUsersByAge(age);
-        if (!listUsers.isEmpty()) {
-            return new ResponseEntity<>(listUsers, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(listUsers, HttpStatus.NO_CONTENT);
-    }
-
-    @GetMapping("/users/search/sex/{sex}")
+    @GetMapping("/users/search")
     public ResponseEntity<List<DTOUser>> getAllUsersBySex(
-            @PathVariable("sex") String sex) {
-        List<DTOUser> listUsers = adminService.getAllUsersBySex(sex);
+            @RequestParam(required = false) String username,
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String sex,
+            @RequestParam(required = false) Integer age,
+            @RequestParam(required = false) String purpose,
+            @RequestParam(required = false) String additionalСharacteristics) {
+        List<DTOUser> listUsers = adminService.getAllSearchingUsers(username, name, sex, age,
+                                                                    purpose, additionalСharacteristics);
         if (!listUsers.isEmpty()) {
             return new ResponseEntity<>(listUsers, HttpStatus.OK);
         }

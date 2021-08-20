@@ -1,6 +1,6 @@
 package my.task.authservice.security;
 
-import my.task.authservice.dto.DTOUserOrAdmin;
+import my.task.authservice.dto.DTOCustomerForAuth;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,14 +23,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        DTOUserOrAdmin dtoUserOrAdmin = restTemplate
-                .getForObject("http://localhost:8765/customer/requestLogin/" + username, DTOUserOrAdmin.class);
-        if (dtoUserOrAdmin != null) {
+        DTOCustomerForAuth dtoCustomerForAuth = restTemplate
+                .getForObject("http://localhost:8765/customer/requestLogin/" + username, DTOCustomerForAuth.class);
+        if (dtoCustomerForAuth != null) {
             List<GrantedAuthority> grantedAuthorities = AuthorityUtils
-                    .commaSeparatedStringToAuthorityList("ROLE_" + dtoUserOrAdmin.getRole());
-            return new org.springframework.security.core.userdetails.User(dtoUserOrAdmin.getUsername(),
-                    dtoUserOrAdmin.getPassword(), grantedAuthorities);
+                    .commaSeparatedStringToAuthorityList("ROLE_" + dtoCustomerForAuth.getRole());
+            return new org.springframework.security.core.userdetails.User(dtoCustomerForAuth.getUsername(),
+                    dtoCustomerForAuth.getPassword(), grantedAuthorities);
         }
-        throw new UsernameNotFoundException("Username: " + dtoUserOrAdmin.getUsername() + " not found");
+        throw new UsernameNotFoundException("Username: " + dtoCustomerForAuth.getUsername() + " not found");
     }
 }

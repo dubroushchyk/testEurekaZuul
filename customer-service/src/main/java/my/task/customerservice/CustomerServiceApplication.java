@@ -47,7 +47,6 @@ public class CustomerServiceApplication {
         user.setName("user");
         user.setSex("Male");
         user.setAge(29);
-        user.setRole("USER");
         user.setPurpose("GAIN_MUSCLE_MASS");
         user.setAdditionalСharacteristics("GLUTEN_FREE_DIET");
         userRepository.save(user);
@@ -56,7 +55,6 @@ public class CustomerServiceApplication {
         Admin admin = new Admin();
         admin.setUsername("admin");
         admin.setPassword(new BCryptPasswordEncoder().encode("admin"));
-        admin.setRole("ADMIN");
         adminRepository.save(admin);
 
         System.out.println("admin saved!!!!!!!!!!!!!!!!!!!!!!!!!!");

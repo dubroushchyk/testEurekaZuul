@@ -2,7 +2,7 @@ package my.task.customerservice.service;
 
 import lombok.RequiredArgsConstructor;
 import my.task.customerservice.dto.DTOUser;
-import my.task.customerservice.dto.DTOUserOrAdmin;
+import my.task.customerservice.dto.DTOCustomerForAuth;
 import my.task.customerservice.model.Admin;
 import my.task.customerservice.model.User;
 import my.task.customerservice.repository.AdminRepository;
@@ -25,7 +25,11 @@ public class UserServiceImpl implements UserService {
     public DTOUser findByUsernameInToken(String token) {
         try {
             User user = userRepository.findByUsername(jwtTokenUtil.getAuthenticatedUserFromHeader(token));
-            return copyUserEntityToDTOUser(user);
+            if (user != null) {
+                user.setPassword(null);
+                return copyUserEntityToDTOUser(user);
+            }
+            return null;
         } catch (Exception e) {
             return null;
         }
@@ -40,10 +44,10 @@ public class UserServiceImpl implements UserService {
             user.setName(dtoUserToUpdate.getName());
             user.setAge(dtoUserToUpdate.getAge());
             user.setSex(dtoUserToUpdate.getSex());
-            user.setRole(dtoUserToUpdate.getRole());
             user.setPurpose(dtoUserToUpdate.getPurpose());
             user.setAdditionalСharacteristics(dtoUserToUpdate.getAdditionalСharacteristics());
             userRepository.save(user);
+            user.setPassword(null);
             return copyUserEntityToDTOUser(user);
         } catch (Exception e) {
             return null;
@@ -55,8 +59,8 @@ public class UserServiceImpl implements UserService {
         try {
             User user = copyDTOUserToUserEntity(dtoUser);
             user.setPassword(passwordEncoder.encode(dtoUser.getPassword()));
-            user.setRole("USER");
             userRepository.save(user);
+            user.setPassword(null);
             return copyUserEntityToDTOUser(user);
         } catch (Exception exception) {
             return null;
@@ -64,15 +68,23 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public DTOUserOrAdmin findCustomerByUsername(String username) {
+    public DTOCustomerForAuth findCustomerByUsername(String username) {
         try {
             User user = userRepository.findCustomerByUsername(username);
             if (user != null) {
-                return copyUserEntityToDTOUserOrAdmin(user);
+                DTOCustomerForAuth dtoCustomerForAuth = new DTOCustomerForAuth();
+                dtoCustomerForAuth.setUsername(user.getUsername());
+                dtoCustomerForAuth.setPassword(user.getPassword());
+                dtoCustomerForAuth.setRole("USER");
+                return dtoCustomerForAuth;
             }
             Admin admin = adminRepository.findCustomerByUsername(username);
             if (admin != null) {
-                return copyAdminEntityToDTOUserOrAdmin(admin);
+                DTOCustomerForAuth dtoCustomerForAuth = new DTOCustomerForAuth();
+                dtoCustomerForAuth.setUsername(admin.getUsername());
+                dtoCustomerForAuth.setPassword(admin.getPassword());
+                dtoCustomerForAuth.setRole("ADMIN");
+                return dtoCustomerForAuth;
             }
             return null;
         } catch (Exception e) {
@@ -91,17 +103,4 @@ public class UserServiceImpl implements UserService {
         BeanUtils.copyProperties(dtoUser, user);
         return user;
     }
-
-    private DTOUserOrAdmin copyUserEntityToDTOUserOrAdmin(User user) {
-        DTOUserOrAdmin dtoUserOrAdmin = new DTOUserOrAdmin();
-        BeanUtils.copyProperties(user, dtoUserOrAdmin);
-        return dtoUserOrAdmin;
-    }
-
-    private DTOUserOrAdmin copyAdminEntityToDTOUserOrAdmin(Admin admin) {
-        DTOUserOrAdmin dtoUserOrAdmin = new DTOUserOrAdmin();
-        BeanUtils.copyProperties(admin, dtoUserOrAdmin);
-        return dtoUserOrAdmin;
-    }
-
 }

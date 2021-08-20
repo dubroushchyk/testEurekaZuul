@@ -16,9 +16,7 @@ public class JwtTokenDeconstructor {
     public String getAuthenticatedUserFromHeader(String header) {
         String token = header.replace(jwtConfig.getPrefix(), "");
 
-        try { // exceptions might be thrown in creating the claims if for example the token is
-            // expired
-
+        try {
             // 4. Validate the token
             Claims claims = Jwts.parser().setSigningKey(jwtConfig.getSecret().getBytes()).parseClaimsJws(token)
                     .getBody();

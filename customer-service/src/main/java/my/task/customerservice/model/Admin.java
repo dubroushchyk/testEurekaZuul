@@ -32,10 +32,6 @@ public class Admin {
     private String password;
 
     @JsonIgnore
-    @Column(name = "role")
-    private String role = "ADMIN";
-
-    @JsonIgnore
     public Long getId() {
         return id;
     }

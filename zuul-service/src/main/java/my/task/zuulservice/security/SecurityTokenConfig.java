@@ -7,7 +7,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
 import javax.servlet.http.HttpServletResponse;
 
 @EnableWebSecurity
@@ -30,8 +29,8 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/customer/requestLogin/*").permitAll()
                 .antMatchers("/customer/user/new").hasAnyRole("ADMIN", "USER")
                 .antMatchers("/customer/user/*").hasRole("USER")
-                .antMatchers("/customer//users/search/**").hasRole("ADMIN")
-                .antMatchers("/customer/admin/new").hasAnyRole("ADMIN")
+                .antMatchers("/customer/users/*").hasRole("ADMIN")
+                .antMatchers("/customer/admin/new").hasRole("ADMIN")
                 .anyRequest().authenticated();
     }
 

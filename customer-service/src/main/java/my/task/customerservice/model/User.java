@@ -33,10 +33,6 @@ public class User {
     @Size(min = 4, max = 100)
     private String password;
 
-    @JsonIgnore
-    @Column(name = "role")
-    private String role = "USER";
-
     @Column(name = "name")
     @NotNull
     @Size(min = 4, max = 50)

@@ -12,11 +12,16 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     User findCustomerByUsername(String username);
 
-    List<User> getAllByAdditionalСharacteristics(String characteristics);
+    List<User> getAllByUsername(String username);
 
-    List<User> getAllByPurpose(String purpose);
+    List<User> getAllByName(String name);
+
+    List<User> getAllBySex(String sex);
 
     List<User> getAllByAge(Integer age);
 
-    List<User> getAllBySex(String sex);
+    List<User> getAllByPurpose(String purpose);
+
+    List<User> getAllByAdditionalСharacteristics(String characteristics);
+
 }

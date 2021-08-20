@@ -1,0 +1,570 @@
+{
+	"info": {
+		"_postman_id": "642d3c8a-c81e-4426-ab1b-99bed7f7bbf8",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Only ADMIN (search)",
+			"item": [
+				{
+					"name": "search/username",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNjI5NDQyMjA4LCJleHAiOjE2Mjk1Mjg2MDh9.fsjPFtmxCuVl5bg-jvajmifuuo-Ii5vC4nGTKmgfp8gsdg8htRw_W6fyZpcXl0N6Ap9vP698G6HpsNyvFWom_w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8765/customer/users/search?username=user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8765",
+							"path": [
+								"customer",
+								"users",
+								"search"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "user"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search/name",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNjI5NDQyMjA4LCJleHAiOjE2Mjk1Mjg2MDh9.fsjPFtmxCuVl5bg-jvajmifuuo-Ii5vC4nGTKmgfp8gsdg8htRw_W6fyZpcXl0N6Ap9vP698G6HpsNyvFWom_w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8765/customer/users/search?name=user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8765",
+							"path": [
+								"customer",
+								"users",
+								"search"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "user"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search/sex",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNjI5NDQyMjA4LCJleHAiOjE2Mjk1Mjg2MDh9.fsjPFtmxCuVl5bg-jvajmifuuo-Ii5vC4nGTKmgfp8gsdg8htRw_W6fyZpcXl0N6Ap9vP698G6HpsNyvFWom_w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8765/customer/users/search?sex=Male",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8765",
+							"path": [
+								"customer",
+								"users",
+								"search"
+							],
+							"query": [
+								{
+									"key": "sex",
+									"value": "Male"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search/age",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNjI5NDQyMjA4LCJleHAiOjE2Mjk1Mjg2MDh9.fsjPFtmxCuVl5bg-jvajmifuuo-Ii5vC4nGTKmgfp8gsdg8htRw_W6fyZpcXl0N6Ap9vP698G6HpsNyvFWom_w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8765/customer/users/search?age=29",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8765",
+							"path": [
+								"customer",
+								"users",
+								"search"
+							],
+							"query": [
+								{
+									"key": "age",
+									"value": "29"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search/purpose",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNjI5NDQyMjA4LCJleHAiOjE2Mjk1Mjg2MDh9.fsjPFtmxCuVl5bg-jvajmifuuo-Ii5vC4nGTKmgfp8gsdg8htRw_W6fyZpcXl0N6Ap9vP698G6HpsNyvFWom_w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8765/customer/users/search?purpose=GAIN_MUSCLE_MASS",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8765",
+							"path": [
+								"customer",
+								"users",
+								"search"
+							],
+							"query": [
+								{
+									"key": "purpose",
+									"value": "GAIN_MUSCLE_MASS"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search/additionalСharacteristics",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNjI5NDQyMjA4LCJleHAiOjE2Mjk1Mjg2MDh9.fsjPFtmxCuVl5bg-jvajmifuuo-Ii5vC4nGTKmgfp8gsdg8htRw_W6fyZpcXl0N6Ap9vP698G6HpsNyvFWom_w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8765/customer/users/search?additionalСharacteristics=GLUTEN_FREE_DIET",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8765",
+							"path": [
+								"customer",
+								"users",
+								"search"
+							],
+							"query": [
+								{
+									"key": "additionalСharacteristics",
+									"value": "GLUTEN_FREE_DIET"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin/new",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNjI5NDQ0MDk0LCJleHAiOjE2Mjk1MzA0OTR9.7BvN3eHOQ0k6w_j2h4mOuCVNs6b4HxMyk46lcIVj8V9MyJ0KxQaio3to2JX3LINRBejHHBbHNHlDGpb7Airvgg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Secret-Key",
+								"value": "MjAvMDgvMjAyMQ==",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"natalia\",\r\n    \"password\": \"natalia\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8765/customer/admin/new",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8765",
+							"path": [
+								"customer",
+								"admin",
+								"new"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user/login (ADMIN)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNjI5NDQyNzU4LCJleHAiOjE2Mjk1MjkxNTh9.u1bUnC0PDOl31T1uaenkgtH4wLGKtIScSPe9JC_wzNPPhJ4rQAZ-y1PxqQNLaifGiY6wGVmuEyFROx03bSMoKw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8765/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user/login (USER)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYyOTQ0MjczNiwiZXhwIjoxNjI5NTI5MTM2fQ.ty3hyoYcWm-qk0lcDiH1PxnAX9RUCtiCIUKBIZT3qrqjOz3EV51XeFtCO68NGXXJ7QCZIJBym0ZXP2E06aFW9A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"user\",\r\n    \"password\": \"user\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8765/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user/new",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYyOTQ0MjczNiwiZXhwIjoxNjI5NTI5MTM2fQ.ty3hyoYcWm-qk0lcDiH1PxnAX9RUCtiCIUKBIZT3qrqjOz3EV51XeFtCO68NGXXJ7QCZIJBym0ZXP2E06aFW9A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"nikolay\",\r\n    \"password\": \"nikolay\",\r\n    \"name\": \"nikolay\",\r\n    \"sex\": \"MALE\",\r\n    \"age\": 29,\r\n    \"purpose\": \"GAIN_MUSCLE_MASS\",\r\n    \"additionalСharacteristics\": \"GLUTEN_FREE_DIET\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8765/customer/user/new",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"customer",
+						"user",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user/detail",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const moment = require('moment');\r",
+							"pm.globals.set(\"today\", moment().format(\"DD/MM/YYYY\"));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYyOTQ0MjczNiwiZXhwIjoxNjI5NTI5MTM2fQ.ty3hyoYcWm-qk0lcDiH1PxnAX9RUCtiCIUKBIZT3qrqjOz3EV51XeFtCO68NGXXJ7QCZIJBym0ZXP2E06aFW9A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Secret-Key",
+						"value": "MjAvMDgvMjAyMQ==",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"user\",\r\n    \"password\": \"user\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8765/customer/user/detail",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"customer",
+						"user",
+						"detail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user/update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYyOTQ0MjczNiwiZXhwIjoxNjI5NTI5MTM2fQ.ty3hyoYcWm-qk0lcDiH1PxnAX9RUCtiCIUKBIZT3qrqjOz3EV51XeFtCO68NGXXJ7QCZIJBym0ZXP2E06aFW9A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"vasilii\",\r\n    \"name\": \"vasiilii\",\r\n    \"sex\": \"MALE\",\r\n    \"age\": 18,\r\n    \"purpose\": \"GAIN_MUSCLE_MASS\",\r\n    \"additionalСharacteristics\": \"GLUTEN_FREE_DIET\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8765/customer/user/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"customer",
+						"user",
+						"update"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

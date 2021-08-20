@@ -1,11 +1,11 @@
 package my.task.customerservice.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
-@Getter
-@Setter
-public class DTOUserOrAdmin {
+@Data
+@RequiredArgsConstructor
+public class DTOCustomerForAuth {
 
     private String username;
 

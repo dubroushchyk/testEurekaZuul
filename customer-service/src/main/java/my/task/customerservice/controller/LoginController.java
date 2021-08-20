@@ -1,6 +1,6 @@
 package my.task.customerservice.controller;
 
-import my.task.customerservice.dto.DTOUserOrAdmin;
+import my.task.customerservice.dto.DTOCustomerForAuth;
 import my.task.customerservice.service.AdminService;
 import my.task.customerservice.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -21,11 +21,11 @@ public class LoginController {
     }
 
     @GetMapping("/requestLogin/{username}")
-    public ResponseEntity<DTOUserOrAdmin> getUsernameAndPasswordAndRoleToAuthService
+    public ResponseEntity<DTOCustomerForAuth> getUsernameAndPasswordAndRoleToAuthService
             (@PathVariable(value = "username") String username) {
-        DTOUserOrAdmin dtoUserOrAdmin = userService.findCustomerByUsername(username);
-        if (dtoUserOrAdmin != null) {
-            return new ResponseEntity<>(dtoUserOrAdmin, HttpStatus.OK);
+        DTOCustomerForAuth dtoCustomerForAuth = userService.findCustomerByUsername(username);
+        if (dtoCustomerForAuth != null) {
+            return new ResponseEntity<>(dtoCustomerForAuth, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }

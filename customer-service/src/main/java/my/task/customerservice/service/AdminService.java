@@ -8,12 +8,7 @@ public interface AdminService {
 
     DTOAdmin createNewAdmin(DTOAdmin dtoAdmin);
 
-    List<DTOUser> getAllUsersByAdditionalСharacteristics(String characteristics);
-
-    List<DTOUser> getAllUsersByPurpose(String purpose);
-
-    List<DTOUser> getAllUsersByAge(Integer age);
-
-    List<DTOUser> getAllUsersBySex(String sex);
+    List<DTOUser> getAllSearchingUsers(String username, String name, String sex,
+                                       Integer age, String purpose, String additionalСharacteristics);
 
 }

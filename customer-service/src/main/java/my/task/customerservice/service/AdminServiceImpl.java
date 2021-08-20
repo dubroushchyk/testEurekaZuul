@@ -10,7 +10,6 @@ import my.task.customerservice.repository.UserRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,49 +25,61 @@ public class AdminServiceImpl implements AdminService {
         try {
             Admin admin = copyDTOUserToUserEntity(dtoAdmin);
             admin.setPassword(passwordEncoder.encode(dtoAdmin.getPassword()));
-            admin.setRole("ADMIN");
             adminRepository.save(admin);
-            return copyAdminEntityToDTOAdmin(admin);
+            dtoAdmin.setPassword(null);
+            return dtoAdmin;
         } catch (Exception exception) {
             return null;
         }
     }
 
     @Override
-    public List<DTOUser> getAllUsersByAdditionalСharacteristics(String characteristics) {
+    public List<DTOUser> getAllSearchingUsers(String username, String name, String sex,
+                                              Integer age, String purpose, String additionalСharacteristics) {
         try {
-            return userRepository.getAllByAdditionalСharacteristics(characteristics)
-                    .stream().map(this::copyUserEntityToDTOUser).collect(Collectors.toList());
-        } catch (Exception e) {
+            if (username != null) {
+                return userRepository.getAllByUsername(username)
+                        .stream().map(user -> {
+                            user.setPassword(null);
+                            return copyUserEntityToDTOUser(user);
+                        }).collect(Collectors.toList());
+            }
+            if (name != null) {
+                return userRepository.getAllByName(name)
+                        .stream().map(user -> {
+                            user.setPassword(null);
+                            return copyUserEntityToDTOUser(user);
+                        }).collect(Collectors.toList());
+            }
+            if (sex != null) {
+                return userRepository.getAllBySex(sex)
+                        .stream().map(user -> {
+                            user.setPassword(null);
+                            return copyUserEntityToDTOUser(user);
+                        }).collect(Collectors.toList());
+            }
+            if (age != null) {
+                return userRepository.getAllByAge(age)
+                        .stream().map(user -> {
+                            user.setPassword(null);
+                            return copyUserEntityToDTOUser(user);
+                        }).collect(Collectors.toList());
+            }
+            if (purpose != null) {
+                return userRepository.getAllByPurpose(purpose)
+                        .stream().map(user -> {
+                            user.setPassword(null);
+                            return copyUserEntityToDTOUser(user);
+                        }).collect(Collectors.toList());
+            }
+            if (additionalСharacteristics != null) {
+                return userRepository.getAllByAdditionalСharacteristics(additionalСharacteristics)
+                        .stream().map(user -> {
+                            user.setPassword(null);
+                            return copyUserEntityToDTOUser(user);
+                        }).collect(Collectors.toList());
+            }
             return null;
-        }
-    }
-
-    @Override
-    public List<DTOUser> getAllUsersByPurpose(String purpose) {
-        try {
-            return userRepository.getAllByPurpose(purpose)
-                    .stream().map(this::copyUserEntityToDTOUser).collect(Collectors.toList());
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    @Override
-    public List<DTOUser> getAllUsersByAge(Integer age) {
-        try {
-            return userRepository.getAllByAge(age)
-                    .stream().map(this::copyUserEntityToDTOUser).collect(Collectors.toList());
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    @Override
-    public List<DTOUser> getAllUsersBySex(String sex) {
-        try {
-            return userRepository.getAllBySex(sex)
-                    .stream().map(this::copyUserEntityToDTOUser).collect(Collectors.toList());
         } catch (Exception e) {
             return null;
         }

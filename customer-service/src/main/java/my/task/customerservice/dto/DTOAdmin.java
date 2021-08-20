@@ -1,10 +1,12 @@
 package my.task.customerservice.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
-@Getter
-@Setter
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@Data
+@RequiredArgsConstructor
 public class DTOAdmin {
 
     private Long id;
