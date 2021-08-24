@@ -8,6 +8,8 @@ import my.task.customerservice.model.User;
 import my.task.customerservice.repository.AdminRepository;
 import my.task.customerservice.repository.UserRepository;
 import my.task.customerservice.util.JwtTokenDeconstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,8 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
 
     private final UserRepository userRepository;
     private final AdminRepository adminRepository;
@@ -29,8 +33,10 @@ public class UserServiceImpl implements UserService {
                 user.setPassword(null);
                 return copyUserEntityToDTOUser(user);
             }
+            LOGGER.info("Not found Username in Token");
             return null;
         } catch (Exception e) {
+            LOGGER.error("Exception in findByUsernameInToken method");
             return null;
         }
     }
@@ -61,8 +67,10 @@ public class UserServiceImpl implements UserService {
             user.setPassword(passwordEncoder.encode(dtoUser.getPassword()));
             userRepository.save(user);
             user.setPassword(null);
+            LOGGER.info("create new User with Username {}", user.getUsername());
             return copyUserEntityToDTOUser(user);
         } catch (Exception exception) {
+            LOGGER.error("Exception in createNewUser method");
             return null;
         }
     }
@@ -70,12 +78,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public DTOCustomerForAuth findCustomerByUsername(String username) {
         try {
+            if (username.trim().length() == 0) {
+                LOGGER.warn("Username with length = 0");
+                return null;
+            }
             User user = userRepository.findCustomerByUsername(username);
             if (user != null) {
                 DTOCustomerForAuth dtoCustomerForAuth = new DTOCustomerForAuth();
                 dtoCustomerForAuth.setUsername(user.getUsername());
                 dtoCustomerForAuth.setPassword(user.getPassword());
                 dtoCustomerForAuth.setRole("USER");
+                LOGGER.info("Found Customer in table User (auth)");
                 return dtoCustomerForAuth;
             }
             Admin admin = adminRepository.findCustomerByUsername(username);
@@ -84,10 +97,13 @@ public class UserServiceImpl implements UserService {
                 dtoCustomerForAuth.setUsername(admin.getUsername());
                 dtoCustomerForAuth.setPassword(admin.getPassword());
                 dtoCustomerForAuth.setRole("ADMIN");
+                LOGGER.info("Found Customer in table Admin (auth)");
                 return dtoCustomerForAuth;
             }
+            LOGGER.warn("Not found Username (auth)");
             return null;
         } catch (Exception e) {
+            LOGGER.error("Exception in findCustomerByUsername method");
             return null;
         }
 }

@@ -13,11 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginController {
 
     private UserService userService;
-    private AdminService adminService;
 
-    public LoginController(UserService userService, AdminService adminService) {
+    public LoginController(UserService userService) {
         this.userService = userService;
-        this.adminService = adminService;
     }
 
     @GetMapping("/requestLogin/{username}")

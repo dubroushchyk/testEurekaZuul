@@ -40,7 +40,7 @@ public class User {
 
     @Column(name = "sex")
     @NotNull
-    @Size(min = 4, max = 5)
+    @Size(min = 4, max = 6)
     private String sex;
 
     @Column(name = "age")

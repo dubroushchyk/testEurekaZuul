@@ -1,17 +1,13 @@
 package my.task.customerservice.dto;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
 @RequiredArgsConstructor
-public class DTOUser {
+public class DTOUsersSearching {
 
     private String username;
-
-    private String password;
 
     private String name;
 

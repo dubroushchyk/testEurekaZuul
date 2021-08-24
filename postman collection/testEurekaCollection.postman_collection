@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "642d3c8a-c81e-4426-ab1b-99bed7f7bbf8",
+		"_postman_id": "128e5221-2988-4c30-bb60-4a9e127f5d9f",
 		"name": "New Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -117,7 +117,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNjI5NDQyMjA4LCJleHAiOjE2Mjk1Mjg2MDh9.fsjPFtmxCuVl5bg-jvajmifuuo-Ii5vC4nGTKmgfp8gsdg8htRw_W6fyZpcXl0N6Ap9vP698G6HpsNyvFWom_w",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNjI5ODA4ODk4LCJleHAiOjE2Mjk4OTUyOTh9.NDTEeQEWlmDVNHXBGDBCmXhWQnHPcUJ-_DNZRW_KrQrFa8srJ-TyK42XediBCMcbvQhydaEoicU_KCaEHd0OBA",
 									"type": "string"
 								}
 							]
@@ -166,7 +166,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNjI5NDQyMjA4LCJleHAiOjE2Mjk1Mjg2MDh9.fsjPFtmxCuVl5bg-jvajmifuuo-Ii5vC4nGTKmgfp8gsdg8htRw_W6fyZpcXl0N6Ap9vP698G6HpsNyvFWom_w",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNjI5ODA4ODk4LCJleHAiOjE2Mjk4OTUyOTh9.NDTEeQEWlmDVNHXBGDBCmXhWQnHPcUJ-_DNZRW_KrQrFa8srJ-TyK42XediBCMcbvQhydaEoicU_KCaEHd0OBA",
 									"type": "string"
 								}
 							]
@@ -215,7 +215,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNjI5NDQyMjA4LCJleHAiOjE2Mjk1Mjg2MDh9.fsjPFtmxCuVl5bg-jvajmifuuo-Ii5vC4nGTKmgfp8gsdg8htRw_W6fyZpcXl0N6Ap9vP698G6HpsNyvFWom_w",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNjI5ODExMzE2LCJleHAiOjE2Mjk4OTc3MTZ9.ajsDTXQP2ewNmXT8YttvJu0fc5GMewx8RXLsepBt7hq85McGRW_uigV_z6_7TbaNW1hFeOevmAece3SeLIPMxw",
 									"type": "string"
 								}
 							]
@@ -306,26 +306,19 @@
 					"name": "admin/new",
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNjI5NDQ0MDk0LCJleHAiOjE2Mjk1MzA0OTR9.7BvN3eHOQ0k6w_j2h4mOuCVNs6b4HxMyk46lcIVj8V9MyJ0KxQaio3to2JX3LINRBejHHBbHNHlDGpb7Airvgg",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "POST",
 						"header": [
 							{
 								"key": "X-Secret-Key",
-								"value": "MjAvMDgvMjAyMQ==",
+								"value": "MjQvMDgvMjAyMQ==",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"natalia\",\r\n    \"password\": \"natalia\"\r\n}",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -347,47 +340,40 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "/login (ADMIN)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8765/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8765",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
 				}
 			]
-		},
-		{
-			"name": "user/login (ADMIN)",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNjI5NDQyNzU4LCJleHAiOjE2Mjk1MjkxNTh9.u1bUnC0PDOl31T1uaenkgtH4wLGKtIScSPe9JC_wzNPPhJ4rQAZ-y1PxqQNLaifGiY6wGVmuEyFROx03bSMoKw",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n\r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8765/auth/login",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8765",
-					"path": [
-						"auth",
-						"login"
-					]
-				}
-			},
-			"response": []
 		},
 		{
 			"name": "user/login (USER)",
@@ -397,7 +383,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYyOTQ0MjczNiwiZXhwIjoxNjI5NTI5MTM2fQ.ty3hyoYcWm-qk0lcDiH1PxnAX9RUCtiCIUKBIZT3qrqjOz3EV51XeFtCO68NGXXJ7QCZIJBym0ZXP2E06aFW9A",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2bGFkIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYyOTgwNDM4MywiZXhwIjoxNjI5ODkwNzgzfQ.a0b433o0i2pTRFGFluHM6DxwAYU4FAmySUt3S233U1aB8SlFLtyMEO6vFv-1Z01aD_8GIQSdeAr6uW30x1xI6A",
 							"type": "string"
 						}
 					]
@@ -406,7 +392,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"user\",\r\n    \"password\": \"user\"\r\n}",
+					"raw": "{\r\n    \"username\": \"nikolay\",\r\n    \"password\": \"nikolay\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -432,20 +418,13 @@
 			"name": "user/new",
 			"request": {
 				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYyOTQ0MjczNiwiZXhwIjoxNjI5NTI5MTM2fQ.ty3hyoYcWm-qk0lcDiH1PxnAX9RUCtiCIUKBIZT3qrqjOz3EV51XeFtCO68NGXXJ7QCZIJBym0ZXP2E06aFW9A",
-							"type": "string"
-						}
-					]
+					"type": "noauth"
 				},
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"nikolay\",\r\n    \"password\": \"nikolay\",\r\n    \"name\": \"nikolay\",\r\n    \"sex\": \"MALE\",\r\n    \"age\": 29,\r\n    \"purpose\": \"GAIN_MUSCLE_MASS\",\r\n    \"additionalСharacteristics\": \"GLUTEN_FREE_DIET\"\r\n}",
+					"raw": "{\r\n    \"username\": \"andrey\",\r\n    \"password\": \"andrey\",\r\n    \"name\": \"nikolay\",\r\n    \"sex\": \"MALE\",\r\n    \"age\": 28,\r\n    \"purpose\": \"GAIN_MUSCLE_MASS\",\r\n    \"additionalСharacteristics\": \"GLUTEN_FREE_DIET\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -488,7 +467,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYyOTQ0MjczNiwiZXhwIjoxNjI5NTI5MTM2fQ.ty3hyoYcWm-qk0lcDiH1PxnAX9RUCtiCIUKBIZT3qrqjOz3EV51XeFtCO68NGXXJ7QCZIJBym0ZXP2E06aFW9A",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuaWtvbGF5IiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYyOTgxMTQwOSwiZXhwIjoxNjI5ODk3ODA5fQ.vu4bh_T4T2_TTey5m17n2jvJK-KY1TSEJS6ur6OlGrjg7_wCQ3YDRVA4elg-gfVnLOiFysCUTSBIcLLahW7Z5g",
 							"type": "string"
 						}
 					]
@@ -503,7 +482,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"user\",\r\n    \"password\": \"user\"\r\n}",
+					"raw": "{\r\n    \"username\": \"nikolay\",\r\n    \"password\": \"nikolay\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -534,7 +513,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYyOTQ0MjczNiwiZXhwIjoxNjI5NTI5MTM2fQ.ty3hyoYcWm-qk0lcDiH1PxnAX9RUCtiCIUKBIZT3qrqjOz3EV51XeFtCO68NGXXJ7QCZIJBym0ZXP2E06aFW9A",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuaWtvbGF5IiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYyOTgxMTQwOSwiZXhwIjoxNjI5ODk3ODA5fQ.vu4bh_T4T2_TTey5m17n2jvJK-KY1TSEJS6ur6OlGrjg7_wCQ3YDRVA4elg-gfVnLOiFysCUTSBIcLLahW7Z5g",
 							"type": "string"
 						}
 					]
@@ -543,7 +522,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"vasilii\",\r\n    \"name\": \"vasiilii\",\r\n    \"sex\": \"MALE\",\r\n    \"age\": 18,\r\n    \"purpose\": \"GAIN_MUSCLE_MASS\",\r\n    \"additionalСharacteristics\": \"GLUTEN_FREE_DIET\"\r\n}",
+					"raw": "{\r\n    \"username\": \"nikolay\",\r\n    \"name\": \"nikolay\",\r\n    \"sex\": \"MALE\",\r\n    \"age\": 18,\r\n    \"purpose\": \"GAIN_MUSCLE_MASS\",\r\n    \"additionalСharacteristics\": \"GLUTEN_FREE_DIET\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

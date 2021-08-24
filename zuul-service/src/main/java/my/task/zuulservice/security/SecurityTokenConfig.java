@@ -27,10 +27,10 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/auth/*").permitAll()
                 .antMatchers("/customer/requestLogin/*").permitAll()
-                .antMatchers("/customer/user/new").hasAnyRole("ADMIN", "USER")
+                .antMatchers("/customer/user/new").anonymous()
                 .antMatchers("/customer/user/*").hasRole("USER")
                 .antMatchers("/customer/users/*").hasRole("ADMIN")
-                .antMatchers("/customer/admin/new").hasRole("ADMIN")
+                .antMatchers("/customer/admin/new").anonymous()
                 .anyRequest().authenticated();
     }
 

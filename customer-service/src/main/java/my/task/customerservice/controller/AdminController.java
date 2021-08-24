@@ -1,7 +1,7 @@
 package my.task.customerservice.controller;
 
 import my.task.customerservice.dto.DTOAdmin;
-import my.task.customerservice.dto.DTOUser;
+import my.task.customerservice.dto.DTOUserListWithCounter;
 import my.task.customerservice.service.AdminService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Base64;
-import java.util.List;
 
 @RestController
 public class AdminController {
@@ -38,18 +37,18 @@ public class AdminController {
     }
 
     @GetMapping("/users/search")
-    public ResponseEntity<List<DTOUser>> getAllUsersBySex(
+    public ResponseEntity<DTOUserListWithCounter> getAllSearchingUsers(
             @RequestParam(required = false) String username,
             @RequestParam(required = false) String name,
             @RequestParam(required = false) String sex,
             @RequestParam(required = false) Integer age,
             @RequestParam(required = false) String purpose,
             @RequestParam(required = false) String additionalСharacteristics) {
-        List<DTOUser> listUsers = adminService.getAllSearchingUsers(username, name, sex, age,
+        DTOUserListWithCounter dtoUserListWithCounter = adminService.getAllSearchingUsers(username, name, sex, age,
                                                                     purpose, additionalСharacteristics);
-        if (!listUsers.isEmpty()) {
-            return new ResponseEntity<>(listUsers, HttpStatus.OK);
+        if (dtoUserListWithCounter != null) {
+            return new ResponseEntity<>(dtoUserListWithCounter, HttpStatus.OK);
         }
-        return new ResponseEntity<>(listUsers, HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(dtoUserListWithCounter, HttpStatus.NO_CONTENT);
     }
 }
