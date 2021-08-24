@@ -42,17 +42,28 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public DTOUserListWithCounter getAllSearchingUsers(String username, String name, String sex,
-                                                       Integer age, String purpose, String additionalСharacteristics) {
+                                                       Integer age, String purpose,
+                                                       String additionalСharacteristics,
+                                                       long offset, long size) {
         try {
+            if (offset < 0) {
+                offset = 0;
+            }
+            if (size < 0) {
+                size = 50;
+            }
+
             if (username != null) {
                 DTOUserListWithCounter dtoUserListWithCounter = new DTOUserListWithCounter();
                 List<DTOUsersSearching> dtoUsersSearchings = userRepository.getAllByUsername(username)
                         .stream()
                         .map(user -> copyUserEntityToDTOUserForSearching(user))
+                        .skip(offset)
+                        .limit(size)
                         .collect(Collectors.toList());
                 dtoUserListWithCounter.setUsersSearchingList(dtoUsersSearchings);
                 dtoUserListWithCounter.setUsersCounter(dtoUsersSearchings.size());
-                LOGGER.info("Found users with searching param Username");
+                LOGGER.info("Found users with searching param Name");
                 return dtoUserListWithCounter;
             }
 
@@ -61,6 +72,8 @@ public class AdminServiceImpl implements AdminService {
                 List<DTOUsersSearching> dtoUsersSearchings = userRepository.getAllByName(name)
                         .stream()
                         .map(user -> copyUserEntityToDTOUserForSearching(user))
+                        .skip(offset)
+                        .limit(size)
                         .collect(Collectors.toList());
                 dtoUserListWithCounter.setUsersSearchingList(dtoUsersSearchings);
                 dtoUserListWithCounter.setUsersCounter(dtoUsersSearchings.size());
@@ -73,6 +86,8 @@ public class AdminServiceImpl implements AdminService {
                 List<DTOUsersSearching> dtoUsersSearchings = userRepository.getAllBySex(sex)
                         .stream()
                         .map(user -> copyUserEntityToDTOUserForSearching(user))
+                        .skip(offset)
+                        .limit(size)
                         .collect(Collectors.toList());
                 dtoUserListWithCounter.setUsersSearchingList(dtoUsersSearchings);
                 dtoUserListWithCounter.setUsersCounter(dtoUsersSearchings.size());
@@ -85,6 +100,8 @@ public class AdminServiceImpl implements AdminService {
                 List<DTOUsersSearching> dtoUsersSearchings = userRepository.getAllByAge(age)
                         .stream()
                         .map(user -> copyUserEntityToDTOUserForSearching(user))
+                        .skip(offset)
+                        .limit(size)
                         .collect(Collectors.toList());
                 dtoUserListWithCounter.setUsersSearchingList(dtoUsersSearchings);
                 dtoUserListWithCounter.setUsersCounter(dtoUsersSearchings.size());
@@ -97,6 +114,8 @@ public class AdminServiceImpl implements AdminService {
                 List<DTOUsersSearching> dtoUsersSearchings = userRepository.getAllByPurpose(purpose)
                         .stream()
                         .map(user -> copyUserEntityToDTOUserForSearching(user))
+                        .skip(offset)
+                        .limit(size)
                         .collect(Collectors.toList());
                 dtoUserListWithCounter.setUsersSearchingList(dtoUsersSearchings);
                 dtoUserListWithCounter.setUsersCounter(dtoUsersSearchings.size());
@@ -109,6 +128,8 @@ public class AdminServiceImpl implements AdminService {
                 List<DTOUsersSearching> dtoUsersSearchings = userRepository.getAllByAdditionalСharacteristics(additionalСharacteristics)
                         .stream()
                         .map(user -> copyUserEntityToDTOUserForSearching(user))
+                        .skip(offset)
+                        .limit(size)
                         .collect(Collectors.toList());
                 dtoUserListWithCounter.setUsersSearchingList(dtoUsersSearchings);
                 dtoUserListWithCounter.setUsersCounter(dtoUsersSearchings.size());

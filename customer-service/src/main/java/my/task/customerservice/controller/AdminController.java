@@ -43,9 +43,11 @@ public class AdminController {
             @RequestParam(required = false) String sex,
             @RequestParam(required = false) Integer age,
             @RequestParam(required = false) String purpose,
-            @RequestParam(required = false) String additionalСharacteristics) {
+            @RequestParam(required = false) String additionalСharacteristics,
+            @RequestParam(required = false, defaultValue = "0") long offset,
+            @RequestParam(required = false, defaultValue = "50") long size) {
         DTOUserListWithCounter dtoUserListWithCounter = adminService.getAllSearchingUsers(username, name, sex, age,
-                                                                    purpose, additionalСharacteristics);
+                                                                    purpose, additionalСharacteristics, offset, size);
         if (dtoUserListWithCounter != null) {
             return new ResponseEntity<>(dtoUserListWithCounter, HttpStatus.OK);
         }

@@ -7,7 +7,9 @@ public interface AdminService {
 
     DTOAdmin createNewAdmin(DTOAdmin dtoAdmin);
 
-    DTOUserListWithCounter getAllSearchingUsers(String username, String name, String sex,
-                                                Integer age, String purpose, String additionalСharacteristics);
+    DTOUserListWithCounter getAllSearchingUsers(String Username, String name, String sex,
+                                                Integer age, String purpose,
+                                                String additionalСharacteristics,
+                                                long offset, long size);
 
 }

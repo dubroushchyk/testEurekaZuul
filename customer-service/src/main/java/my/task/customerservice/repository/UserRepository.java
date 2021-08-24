@@ -12,7 +12,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     User findCustomerByUsername(String username);
 
-    List<User> getAllByUsername(String username);
+    List<User> getAllByUsername(String name);
 
     List<User> getAllByName(String name);
 
